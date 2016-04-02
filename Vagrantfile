@@ -86,6 +86,7 @@ Vagrant.configure(2) do |config|
       recipe[yum-epel]
       recipe[nginx]
       recipe[php-env::php55]
+      recipe[postgresql]
     ]
   end
 
