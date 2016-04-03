@@ -5,6 +5,8 @@ DEPENDENCIES
     path: site-cookbooks/php-env
   postgresql
     path: site-cookbooks/postgresql
+  rsync
+    path: site-cookbooks/rsync
   yum-epel
 
 GRAPH
@@ -12,6 +14,7 @@ GRAPH
     yum-epel (>= 0.0.0)
   php-env (0.1.0)
   postgresql (0.1.0)
+  rsync (0.1.0)
   yum (3.10.0)
   yum-epel (0.6.5)
     yum (~> 3.2)

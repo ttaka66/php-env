@@ -87,7 +87,10 @@ Vagrant.configure(2) do |config|
       recipe[nginx]
       recipe[php-env::php55]
       recipe[postgresql]
+      recipe[rsync]
     ]
   end
+
+  config.vm.synced_folder "/Users/#{ENV['USER']}/php_app", "/usr/share/nginx/html/", type: "rsync", create: true, owner: "vagrant", group: "vagrant", rsync__exclude: [".git/", "vendor/"]
 
 end
