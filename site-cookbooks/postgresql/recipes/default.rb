@@ -15,3 +15,12 @@ end
 service "postgresql" do
   action [:enable, :start]
 end
+
+execute "create-database-user" do
+  user "postgres"
+  exist = <<-EOH
+  psql -U postgres -c "select * from pg_user where usename='#{node['postgresql']['user']}'" | grep -c #{node['postgresql']['user']}
+  EOH
+  command "createuser -U postgres -SdR #{node['postgresql']['user']}"
+  not_if exist
+end

@@ -1,0 +1,1 @@
+default['postgresql']['user'] = "vagrant"
