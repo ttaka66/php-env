@@ -24,3 +24,11 @@ execute "create-database-user" do
   command "createuser -U postgres -SdR #{node['postgresql']['user']}"
   not_if exist
 end
+
+template "pg_hba.conf" do
+  path "/var/lib/pgsql/data/pg_hba.conf"
+  source "pg_hba.conf.erb"
+  user node['postgresql']['super_user']
+  mode "0644"
+  notifies :restart, "service[postgresql]"
+end
